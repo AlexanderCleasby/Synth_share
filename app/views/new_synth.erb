@@ -1,0 +1,55 @@
+<script src="https://unpkg.com/@webcomponents/webcomponentsjs@^2/webcomponents-bundle.js"></script>
+<script src="https://unpkg.com/tone"></script>
+<script src="https://unpkg.com/@tonejs/ui"></script>
+
+
+<tone-keyboard octaves="3"></tone-keyboard>
+<form method="POST" action="/synths/new">
+    <input type="text" name="name" value="Enter a Name!">
+    <br>
+    <select name="synth[osc][][type]" id="voice1_type_dropdown">
+        <option value="sine" onchange="typechange()">sine</option>
+        <option value="sawtooth" onchange="typechange()">sawtooth</option>
+        <option value="square" onchange="typechange()">square</option>
+        <option value="triangle" onchange="typechange()">triangle</option>
+    </select>
+    <label>Attack:</label><input name="synth[osc][][attack]" type="range" id="voice1_attack_slider" min="0" max="2" value="0" step=".01">
+    <label>Decay:</label><input name="synth[osc][][decay]" type="range" id="voice1_decay_slider" min="0" max="2" value="0" step=".01">
+    <label>Sustain:</label><input name="synth[osc][][sustain]" type="range" id="voice1_sustain_slider" min="0" max="1" value="0" step=".01">
+    <label>Release:</label><input name="synth[osc][][release]" type="range" id="voice1_release_slider" min=".01" max=".5" value=".01" step=".01">
+    <label>Detune:</label><input name="synth[osc][][detune]" type="range" id="voice1_detune_slider" min="-1200" max="1200" value="0" step="100">
+    <br>
+    <select name="synth[osc][][type]" id="voice2_type_dropdown">
+        <option value="sine" onchange="typechange()">sine</option>
+        <option value="sawtooth" onchange="typechange()">sawtooth</option>
+        <option value="square" onchange="typechange()">square</option>
+        <option value="triangle" onchange="typechange()">triangle</option>
+    </select>
+    <label>Attack:</label><input name="synth[osc][][attack]" type="range" id="voice2_attack_slider" min="0" max="2" value="0" step=".01">
+    <label>Decay:</label><input name="synth[osc][][decay]" type="range" id="voice2_decay_slider" min="0" max="2" value="0" step=".01">
+    <label>Sustain:</label><input name="synth[osc][][sustain]" type="range" id="voice2_sustain_slider" min="0" max=".5" value="0" step=".01">
+    <label>Release:</label><input name="synth[osc][][release]" type="range" id="voice2_release_slider" min=".01" max="2" value=".01" step=".01">
+    <label>Detune:</label><input name="synth[osc][][detune]" type="range" id="voice2_detune_slider" min="-1200" max="1200" value="0" step="100">
+    <br>
+    <select name="synth[osc][][type]" id="voice3_type_dropdown">
+        <option value="sine" onchange="typechange()">sine</option>
+        <option value="sawtooth" onchange="typechange()">sawtooth</option>
+        <option value="square" onchange="typechange()">square</option>
+        <option value="triangle" onchange="typechange()">triangle</option>
+    </select>
+    <label>Attack:</label><input name="synth[osc][][attack]" type="range" id="voice3_attack_slider" min="0" max="2" value="0" step=".01">
+    <label>Decay:</label><input name="synth[osc][][decay]" type="range" id="voice3_decay_slider" min="0" max="2" value="0" step=".01">
+    <label>Sustain:</label><input name="synth[osc][][sustain]" type="range" id="voice3_sustain_slider" min="0" max=".5" value="0" step=".01">
+    <label>Release:</label><input name="synth[osc][][release]" type="range" id="voice3_release_slider" min=".01" max="2" value=".01" step=".01">
+    <label>Detune:</label><input name="synth[osc][][detune]" type="range" id="voice3_detune_slider" min="-1200" max="1200" value="0" step="100">
+    <br>
+    <input type="submit" name="button_1" value="name">
+    <input type="submit" name="button_1" value="SAVE">
+</form>
+
+
+
+
+
+
+<script src="/javascripts/synth.js"></script>

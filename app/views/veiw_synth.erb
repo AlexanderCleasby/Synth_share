@@ -1,0 +1,55 @@
+<script src="https://unpkg.com/@webcomponents/webcomponentsjs@^2/webcomponents-bundle.js"></script>
+<script src="https://unpkg.com/tone"></script>
+<script src="https://unpkg.com/@tonejs/ui"></script>
+
+
+<tone-keyboard octaves="3"></tone-keyboard>
+<form method="POST" action="/synths/new">
+    <input type="text" value="<%= @synth.name %>">
+    <br>
+    <select name="synth[osc][][type]" id="voice1_type_dropdown"  >
+        <option value="sine" onchange="typechange()" <%= if @synth.oscs[0].waveform=="sine" then "selected" end %> >sine</option>
+        <option value="sawtooth" onchange="typechange()" <%= if @synth.oscs[0].waveform=="sawtooth" then "selected" end %>>sawtooth</option>
+        <option value="square" onchange="typechange()" <%= if @synth.oscs[0].waveform=="square" then "selected" end %>>square</option>
+        <option value="triangle" onchange="typechange()" <%= if @synth.oscs[0].waveform=="triangle" then "selected" end %>>triangle</option>
+    </select>
+    <label>Attack:</label><input name="synth[osc][][attack]" type="range" id="voice1_attack_slider" min="0" max="2" value="<%= @synth.oscs[0].attack %>" step=".01">
+    <label>Decay:</label><input name="synth[osc][][decay]" type="range" id="voice1_decay_slider" min="0" max="2" value="<%= @synth.oscs[0].decay %>" step=".01">
+    <label>Sustain:</label><input name="synth[osc][][sustain]" type="range" id="voice1_sustain_slider" min="0" max="1" value="<%= @synth.oscs[0].sustain %>" step=".01">
+    <label>Release:</label><input name="synth[osc][][release]" type="range" id="voice1_release_slider" min=".01" max=".5" value="<%= @synth.oscs[0].release %>" step=".01">
+    <label>Detune:</label><input name="synth[osc][][detune]" type="range" id="voice1_detune_slider" min="-1200" max="1200" value="<%= @synth.oscs[0].detune %>" step="100">
+    <br>
+    <select name="synth[osc][][type]" id="voice2_type_dropdown">
+        <option value="sine" onchange="typechange()" <%= if @synth.oscs[1].waveform=="sine" then "selected" end %> >sine</option>
+        <option value="sawtooth" onchange="typechange()" <%= if @synth.oscs[1].waveform=="sawtooth" then "selected" end %>>sawtooth</option>
+        <option value="square" onchange="typechange()" <%= if @synth.oscs[1].waveform=="square" then "selected" end %> >square</option>
+        <option value="triangle" onchange="typechange()" <%= if @synth.oscs[1].waveform=="triangle" then "selected" end %>>triangle</option>
+    </select>
+    <label>Attack:</label><input name="synth[osc][][attack]" type="range" id="voice2_attack_slider" min="0" max="2" value="<%= @synth.oscs[1].attack %>" step=".01">
+    <label>Decay:</label><input name="synth[osc][][decay]" type="range" id="voice2_decay_slider" min="0" max="2" value="<%= @synth.oscs[1].decay %>" step=".01">
+    <label>Sustain:</label><input name="synth[osc][][sustain]" type="range" id="voice2_sustain_slider" min="0" max=".5" value="<%= @synth.oscs[1].sustain %>" step=".01">
+    <label>Release:</label><input name="synth[osc][][release]" type="range" id="voice2_release_slider" min=".01" max="2" value="<%= @synth.oscs[1].release %>" step=".01">
+    <label>Detune:</label><input name="synth[osc][][detune]" type="range" id="voice2_detune_slider" min="-1200" max="1200" value="<%= @synth.oscs[1].detune %>" step="100">
+    <br>
+    <select name="synth[osc][][type]" id="voice3_type_dropdown">
+        <option value="sine" onchange="typechange()" <%= if @synth.oscs[2].waveform=="sine" then "selected" end %>  >sine</option>
+        <option value="sawtooth" onchange="typechange()" <%= if @synth.oscs[2].waveform=="sawtooth" then "selected" end %> > sawtooth</option>
+        <option value="square" onchange="typechange()" <%= if @synth.oscs[2].waveform=="square" then "selected" end %>  > square</option>
+        <option value="triangle" onchange="typechange()" <%= if @synth.oscs[2].waveform=="triangle" then "selected" end %> > triangle</option>
+    </select>
+    <label>Attack:</label><input name="synth[osc][][attack]" type="range" id="voice3_attack_slider" min="0" max="2"  value="<%= @synth.oscs[2].attack %>" step=".01">
+    <label>Decay:</label><input name="synth[osc][][decay]" type="range" id="voice3_decay_slider" min="0" max="2"  value="<%= @synth.oscs[2].decay %>" step=".01">
+    <label>Sustain:</label><input name="synth[osc][][sustain]" type="range" id="voice3_sustain_slider" min="0" max=".5"  value="<%= @synth.oscs[2].sustain %>" step=".01">
+    <label>Release:</label><input name="synth[osc][][release]" type="range" id="voice3_release_slider" min=".01" max="2"  value="<%= @synth.oscs[2].release %>" step=".01">
+    <label>Detune:</label><input name="synth[osc][][detune]" type="range" id="voice3_detune_slider" min="-1200" max="1200"  value="<%= @synth.oscs[2].detune %>" step="100">
+    <br>
+    <input type="submit" name="button_1" value="name">
+    <input type="submit" name="button_1" value="SAVE">
+</form>
+
+
+
+
+
+
+<script src="/javascripts/synth.js"></script>

@@ -1,0 +1,14 @@
+<link rel="stylesheet" href="/stylesheets/index.css" />
+
+<button class="auth"><a href="/login">log in</a></button>
+<button class="auth"><a href="/signup">signup</a></button>
+
+<ul>
+    <% @synths.each{ |synth| %>
+    <li>
+        <h3> <%= synth.name %> </h3>
+        <h5> <i> <%=synth.user.username %> </i></h2>
+    </li>
+    <% } %>
+
+</ul>
