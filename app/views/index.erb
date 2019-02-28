@@ -1,13 +1,19 @@
 <link rel="stylesheet" href="/stylesheets/index.css" />
+<ul class="nav">
+<% if session[:user_id] then %>
+<li ><a href="synth/new">New</a></li>
+<% else %>
+<li><a href="/login">log in</a></li>
+<li><a href="/signup">signup</a></li>
+<% end %>
+</ul>
 
-<button class="auth"><a href="/login">log in</a></button>
-<button class="auth"><a href="/signup">signup</a></button>
-
-<ul>
+<ul class="synth_select">
     <% @synths.each{ |synth| %>
     <li>
-        <h3> <%= synth.name %> </h3>
-        <h5> <i> <%=synth.user.username %> </i></h2>
+        <h3> <%= synth.name %> </h3> 
+        <div class="GO"><a  href="/synths/<%=synth.id%>">GO!</a></div>
+        <h5> By:<i> <%=synth.user.username %> </i></h2>
     </li>
     <% } %>
 
