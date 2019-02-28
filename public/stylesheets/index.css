@@ -47,6 +47,10 @@
     height: 100px;
 }
 
+.synth_select li h3{
+    overflow: hidden;
+}
+
 .GO{
     display: block;
     margin: 0 20%;
@@ -58,5 +62,6 @@
 }
 .GO a {
     color: white;
+    background: none;
     margin-top:10px;
     }
