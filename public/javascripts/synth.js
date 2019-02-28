@@ -1,6 +1,6 @@
 
 //Initialize Synths
-var voice1 = new Tone.Synth({
+var voice1 = new Tone.PolySynth(5, Tone.Synth,{
     oscillator: {
         type: document.getElementById("voice1_type_dropdown").value,
     },
@@ -14,7 +14,7 @@ var voice1 = new Tone.Synth({
     
 }).toMaster()
 
-var voice2 = new Tone.Synth({
+var voice2 = new Tone.PolySynth(5, Tone.Synth,{
     oscillator: {
         type: document.getElementById("voice2_type_dropdown").value,
         
@@ -27,7 +27,7 @@ var voice2 = new Tone.Synth({
     }
 }).toMaster()
 
-var voice3 = new Tone.Synth({
+var voice3 = new Tone.PolySynth(5, Tone.Synth,{
     oscillator: {
         type: document.getElementById("voice3_type_dropdown").value,
         
@@ -39,13 +39,17 @@ var voice3 = new Tone.Synth({
         release: document.getElementById("voice3_release_slider").value
     }
 }).toMaster()
-console.log("meh")
+
+//voice1 = new Tone.PolySynth(4,Tone.Synth).toMater()
+//voice2 = new Tone.PolySynth(4,Tone.Synth).toMater()
+//voice3 = new Tone.PolySynth(4,Tone.Synth).toMater()
 voice1.set("detune", Number(document.getElementById("voice1_detune_slider").value))
 voice2.set("detune", Number(document.getElementById("voice2_detune_slider").value))
 voice3.set("detune", Number(document.getElementById("voice3_detune_slider").value))
 
 //trigger attack on key press
 document.querySelector('tone-keyboard').addEventListener('noteon', e => {
+    console.log("triggering: "+e.detail.name)
     voice1.triggerAttack(e.detail.name)
     voice2.triggerAttack(e.detail.name)
     voice3.triggerAttack(e.detail.name)
@@ -53,9 +57,10 @@ document.querySelector('tone-keyboard').addEventListener('noteon', e => {
 
 //trigger release on key release
 document.querySelector('tone-keyboard').addEventListener('noteoff', e => {
-    voice1.triggerRelease()
-    voice2.triggerRelease()
-    voice3.triggerRelease()
+    console.log("releasing: "+e.detail.name)
+    voice1.triggerRelease(e.detail.name)
+    voice2.triggerRelease(e.detail.name)
+    voice3.triggerRelease(e.detail.name)
 })
 
 //REPATING SECTION THAT SHOULD PROBABLY BE A LOOP!!!!
