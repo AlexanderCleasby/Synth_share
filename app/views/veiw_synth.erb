@@ -43,8 +43,10 @@
     <label>Release:</label><input name="synth[osc][][release]" type="range" id="voice3_release_slider" min=".01" max="2"  value="<%= @synth.oscs[2].release %>" step=".01">
     <label>Detune:</label><input name="synth[osc][][detune]" type="range" id="voice3_detune_slider" min="-1200" max="1200"  value="<%= @synth.oscs[2].detune %>" step="100">
     <br>
-    <input type="submit" name="button_1" value="name">
-    <input type="submit" name="button_1" value="SAVE">
+    <div class="button_cont">
+        <input type="submit" name="button_1" value="UPDATE">
+        <input type="submit" name="button_1" value="SAVE NEW">
+    </div>
 </form>
 <!--<tone-waveform class="demo"></tone-waveform>-->
 
