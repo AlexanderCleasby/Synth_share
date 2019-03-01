@@ -1,6 +1,5 @@
-
 //Initialize Synths
-var voice1 = new Tone.PolySynth(5, Tone.Synth,{
+var voice1 = new Tone.PolySynth(5, Tone.Synth, {
     oscillator: {
         type: document.getElementById("voice1_type_dropdown").value,
     },
@@ -10,14 +9,14 @@ var voice1 = new Tone.PolySynth(5, Tone.Synth,{
         sustain: document.getElementById("voice1_sustain_slider").value,
         release: document.getElementById("voice1_release_slider").value
     },
-    detune:Number(document.getElementById("voice1_detune_slider").value)
-    
+    detune: Number(document.getElementById("voice1_detune_slider").value)
+
 }).toMaster()
 
-var voice2 = new Tone.PolySynth(5, Tone.Synth,{
+var voice2 = new Tone.PolySynth(5, Tone.Synth, {
     oscillator: {
         type: document.getElementById("voice2_type_dropdown").value,
-        
+
     },
     envelope: {
         attack: document.getElementById("voice2_attack_slider").value,
@@ -27,10 +26,10 @@ var voice2 = new Tone.PolySynth(5, Tone.Synth,{
     }
 }).toMaster()
 
-var voice3 = new Tone.PolySynth(5, Tone.Synth,{
+var voice3 = new Tone.PolySynth(5, Tone.Synth, {
     oscillator: {
         type: document.getElementById("voice3_type_dropdown").value,
-        
+
     },
     envelope: {
         attack: document.getElementById("voice3_attack_slider").value,
@@ -49,7 +48,7 @@ voice3.set("detune", Number(document.getElementById("voice3_detune_slider").valu
 
 //trigger attack on key press
 document.querySelector('tone-keyboard').addEventListener('noteon', e => {
-    console.log("triggering: "+e.detail.name)
+    console.log("triggering: " + e.detail.name)
     voice1.triggerAttack(e.detail.name)
     voice2.triggerAttack(e.detail.name)
     voice3.triggerAttack(e.detail.name)
@@ -57,7 +56,7 @@ document.querySelector('tone-keyboard').addEventListener('noteon', e => {
 
 //trigger release on key release
 document.querySelector('tone-keyboard').addEventListener('noteoff', e => {
-    console.log("releasing: "+e.detail.name)
+    console.log("releasing: " + e.detail.name)
     voice1.triggerRelease(e.detail.name)
     voice2.triggerRelease(e.detail.name)
     voice3.triggerRelease(e.detail.name)
@@ -65,18 +64,27 @@ document.querySelector('tone-keyboard').addEventListener('noteoff', e => {
 
 //REPATING SECTION THAT SHOULD PROBABLY BE A LOOP!!!!
 //create event for hanfling sliders
-var attrChange1 = (e)=>{
-    let slidertype=e.target.id.split("_")[1]
-    voice1.envelope[slidertype]=Number(e.target.value)
-    if(slidertype=="detune"){
+var attrChange1 = (e) => {
+    let slidertype = e.target.id.split("_")[1]
+    if (slidertype == "detune") {
         console.log(e.target.value)
-        voice1.set("detune",Number(e.target.value))
+        voice1.set("detune", Number(e.target.value))
+    } else {
+        voice1.set({
+            envelope: {
+                [slidertype]: Number(e.target.value)
+            }
+        })
     }
 }
 
 //change voice type in response to selector
 document.getElementById("voice1_type_dropdown").addEventListener("change", (e) => {
-    voice1.oscillator.type = e.target.value
+    voice1.set({
+        oscillator: {
+            type: e.target.value
+        }
+    })
 })
 
 //change each attribute
@@ -92,18 +100,26 @@ document.getElementById("voice1_detune_slider").addEventListener("input", attrCh
 
 //REPATING SECTION THAT SHOULD PROBABLY BE A LOOP!!!!
 //create event for hanfling sliders
-var attrChange2 = (e)=>{
-    let slidertype=e.target.id.split("_")[1]
-    voice2.envelope[slidertype]=Number(e.target.value)
-    if(slidertype=="detune"){
-        console.log(e.target.value)
-        voice2.set("detune",Number(e.target.value))
+var attrChange2 = (e) => {
+    let slidertype = e.target.id.split("_")[1]
+    if (slidertype == "detune") {
+        voice2.set("detune", Number(e.target.value))
+    } else {
+        voice2.set({
+            envelope: {
+                [slidertype]: Number(e.target.value)
+            }
+        })
     }
 }
 
 //change voice type in response to selector
 document.getElementById("voice2_type_dropdown").addEventListener("change", (e) => {
-    voice2.oscillator.type = e.target.value
+    voice2.set({
+        oscillator: {
+            type: e.target.value
+        }
+    })
     //voice2.set({oscillator:{type: e.target.value}
 })
 
@@ -120,18 +136,26 @@ document.getElementById("voice2_detune_slider").addEventListener("input", attrCh
 
 //REPATING SECTION THAT SHOULD PROBABLY BE A LOOP!!!!
 //create event for hanfling sliders
-var attrChange3 = (e)=>{
-    let slidertype=e.target.id.split("_")[1]
-    voice3.envelope[slidertype]=Number(e.target.value)
-    if(slidertype=="detune"){
-        console.log(e.target.value)
-        voice3.set("detune",Number(e.target.value))
+var attrChange3 = (e) => {
+    let slidertype = e.target.id.split("_")[1]
+    if (slidertype == "detune") {
+        voice2.set("detune", Number(e.target.value))
+    } else {
+        voice2.set({
+            envelope: {
+                [slidertype]: Number(e.target.value)
+            }
+        })
     }
 }
 
 //change voice type in response to selector
 document.getElementById("voice3_type_dropdown").addEventListener("change", (e) => {
-    voice3.oscillator.type = e.target.value
+    voice3.set({
+        oscillator: {
+            type: e.target.value
+        }
+    })
 })
 
 //change each attribute
