@@ -45,10 +45,12 @@
     margin: 5px;
     padding:1%;
     height: 100px;
+    min-width: 180px;
 }
 
 .synth_select li h3{
     overflow: hidden;
+    white-space: nowrap;
 }
 
 .GO{
@@ -59,6 +61,7 @@
     height: 0 auto;
     background-color: black;
     color: white;
+    
 }
 .GO a {
     color: white;
