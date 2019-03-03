@@ -76,8 +76,18 @@ class ApplicationController < Sinatra::Base
   post "/synths/:id" do
     #use a second input button to diffrentiate update vs Save
     @synth=Synth.find(params[:id])
-    puts @synth
-    "pool"
+    
+    if params[:ACTION]=="UPDATE" && @synth.user_id==session[:user_id] then
+      @synth.update(name:params[:name])
+      @synth.oscs.each_with_index{|osc,i|
+        p = params[:synth][:osc][i]
+        osc.update(waveform:p[:type],attack:p[:attack],decay:p[:decay],sustain:p[:sustain],release:p[:release],detune:p[:detune])
+      }
+      redirect to "/synths/#{@synth.id}"
+    else
+      redirect to "/synths/new"
+    
+    end
   end
 
 end

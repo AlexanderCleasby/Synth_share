@@ -4,8 +4,8 @@
 
 
 <tone-keyboard octaves="3"></tone-keyboard>
-<form method="POST" action="/synths/new">
-    <input type="text" value="<%= @synth.name %>">
+<form method="POST" action='/synths/<%= "#{@synth.id}" %>'>
+    <input type="text" name="name" value="<%= @synth.name %>">
     <br>
     <select name="synth[osc][][type]" id="voice1_type_dropdown"  >
         <option value="sine" onchange="typechange()" <%= if @synth.oscs[0].waveform=="sine" then "selected" end %> >sine</option>
@@ -44,8 +44,10 @@
     <label>Detune:</label><input name="synth[osc][][detune]" type="range" id="voice3_detune_slider" min="-1200" max="1200"  value="<%= @synth.oscs[2].detune %>" step="100">
     <br>
     <div class="button_cont">
-        <input type="submit" name="button_1" value="UPDATE">
-        <input type="submit" name="button_1" value="SAVE NEW">
+        <%if @synth.user_id==session[:user_id] %>
+            <input type="submit" name="ACTION" value="UPDATE">
+        <% end%>
+        <input type="submit" name="ACTION" value="SAVE NEW">
     </div>
 </form>
 <!--<tone-waveform class="demo"></tone-waveform>-->
