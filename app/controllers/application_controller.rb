@@ -52,15 +52,8 @@ class ApplicationController < Sinatra::Base
     #defrentia
     #binding.pry
     @synth = Synth.create(name:params[:name],user_id:session[:user_id])
-    puts @synth.id
     params["synth"]["osc"].each_with_index{ |osc,i|
-      puts osc[:type]
-      Osc.create(waveform:osc[:type],attack:osc[:attack],decay:osc[:decay],sustain:osc[:sustain],release:osc[:release],detune:osc[:detune],synth_id:@synth.id)
-      puts "OSC "+i.to_s
-      osc.each{ |k,d|
-        puts "  "+k.to_s + ":" + d.to_s
-        
-      }
+      Osc.create(waveform:osc[:type],attack:osc[:attack],decay:osc[:decay],sustain:osc[:sustain],release:osc[:release],detune:osc[:detune],synth_id:@synth.id)    
     }
     redirect to "/synths/#{@synth.id}"
   end
@@ -85,8 +78,11 @@ class ApplicationController < Sinatra::Base
       }
       redirect to "/synths/#{@synth.id}"
     else
-      redirect to "/synths/new"
-    
+      @synth = Synth.create(name:params[:name],user_id:session[:user_id])
+      params["synth"]["osc"].each_with_index{ |osc,i|
+        Osc.create(waveform:osc[:type],attack:osc[:attack],decay:osc[:decay],sustain:osc[:sustain],release:osc[:release],detune:osc[:detune],synth_id:@synth.id)    
+      }
+      redirect to "/synths/#{@synth.id}"
     end
   end
 
