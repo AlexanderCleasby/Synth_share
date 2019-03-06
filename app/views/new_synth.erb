@@ -1,7 +1,7 @@
 <script src="https://unpkg.com/@webcomponents/webcomponentsjs@^2/webcomponents-bundle.js"></script>
 <script src="https://unpkg.com/tone"></script>
 <script src="https://unpkg.com/@tonejs/ui"></script>
-
+<link rel="stylesheet" href="/stylesheets/synth.css" />
 
 <tone-keyboard octaves="3"></tone-keyboard>
 <form method="POST" action="/synths/new">
@@ -13,6 +13,7 @@
         <option value="square" onchange="typechange()">square</option>
         <option value="triangle" onchange="typechange()">triangle</option>
     </select>
+    <br>
     <label>Attack:</label><input name="synth[osc][][attack]" type="range" id="voice1_attack_slider" min="0" max="2" value="0" step=".01">
     <label>Decay:</label><input name="synth[osc][][decay]" type="range" id="voice1_decay_slider" min="0" max="2" value="0" step=".01">
     <label>Sustain:</label><input name="synth[osc][][sustain]" type="range" id="voice1_sustain_slider" min="0" max="1" value="0" step=".01">
@@ -25,6 +26,7 @@
         <option value="square" onchange="typechange()">square</option>
         <option value="triangle" onchange="typechange()">triangle</option>
     </select>
+    <br>
     <label>Attack:</label><input name="synth[osc][][attack]" type="range" id="voice2_attack_slider" min="0" max="2" value="0" step=".01">
     <label>Decay:</label><input name="synth[osc][][decay]" type="range" id="voice2_decay_slider" min="0" max="2" value="0" step=".01">
     <label>Sustain:</label><input name="synth[osc][][sustain]" type="range" id="voice2_sustain_slider" min="0" max=".5" value="0" step=".01">
@@ -37,6 +39,7 @@
         <option value="square" onchange="typechange()">square</option>
         <option value="triangle" onchange="typechange()">triangle</option>
     </select>
+    <br>
     <label>Attack:</label><input name="synth[osc][][attack]" type="range" id="voice3_attack_slider" min="0" max="2" value="0" step=".01">
     <label>Decay:</label><input name="synth[osc][][decay]" type="range" id="voice3_decay_slider" min="0" max="2" value="0" step=".01">
     <label>Sustain:</label><input name="synth[osc][][sustain]" type="range" id="voice3_sustain_slider" min="0" max=".5" value="0" step=".01">

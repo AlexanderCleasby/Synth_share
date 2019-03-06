@@ -1,0 +1,70 @@
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none; 
+    appearance: none;
+    width: 20px; 
+    height: 20px;
+    /*border-radius: 50%;*/
+    background: rgb(234, 167, 255);
+    cursor: pointer; 
+}
+
+input[type=range]{
+    -webkit-appearance: none;
+    appearance: none;
+    width: 90%;
+    height: 20px;
+    background: rgb(85, 85, 85);
+    cursor: pointer;
+    
+}
+label{
+    margin: 0%;
+    width: 10%;
+    height: 20px;
+    font-weight: bolder;
+    display: inline-block;
+    text-align: center;
+}
+
+.slider_Cont{
+    width:100%;
+    height: 20px;
+}
+
+label:nth-of-type(5n+1){
+    color:rgb(255, 224, 167);
+}
+
+label:nth-of-type(5n+2){
+    color:rgb(167, 255, 204);
+}
+
+input[type=range]:nth-of-type(5n+2)::-webkit-slider-thumb{
+    background-color: rgb(255, 224, 167);
+}
+
+input[type=range]:nth-of-type(5n+3)::-webkit-slider-thumb {
+    background-color: rgb(167, 255, 204);
+}
+
+input[type=range]:nth-of-type(5n+4)::-webkit-slider-thumb {
+    background-color: rgb(255, 167, 204);
+}
+
+input[type=range]:nth-of-type(5n+5)::-webkit-slider-thumb {
+    background-color: rgb(237, 167, 255);
+}
+
+input[type=range]:nth-of-type(5n+6)::-webkit-slider-thumb {
+    background-color: rgb(167, 237, 255);
+}
+
+
+@media screen and (max-width: 600px) {
+    input[type=range]{
+        width: 80%; 
+    }
+    label{
+        width: 20%;
+    }
+}
