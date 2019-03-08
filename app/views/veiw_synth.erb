@@ -3,7 +3,7 @@
 <script src="https://unpkg.com/@tonejs/ui"></script>
 <link rel="stylesheet" href="/stylesheets/synth.css" />
 
-<tone-keyboard rootoctave="2" octaves="3"></tone-keyboard>
+<tone-keyboard  octaves="3"></tone-keyboard>
 <form method="POST" action='/synths/<%= "#{@synth.id}" %>'>
     <input type="text" name="name" value="<%= @synth.name %>">
     <br>
