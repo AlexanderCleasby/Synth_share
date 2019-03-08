@@ -6,10 +6,8 @@ gem 'sinatra-activerecord', :require => 'sinatra/activerecord'
 gem 'rake'
 gem 'require_all'
 gem 'thin'
-gem 'shotgun'
-gem 'pry'
 gem 'bcrypt'
-gem "tux"
+gem 'pg', '0.20'
 
 group :test do
   gem 'rspec'
@@ -20,4 +18,7 @@ end
 
 group :development do
   gem 'sqlite3' , '~> 1.3.6'
+  gem 'shotgun'
+  gem 'pry'
+  gem "tux"
 end
