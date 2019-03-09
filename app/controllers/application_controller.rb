@@ -49,8 +49,6 @@ class ApplicationController < Sinatra::Base
   end
 
   post "/synths/new" do
-    #defrentia
-    #binding.pry
     @synth = Synth.create(name:params[:name],user_id:session[:user_id])
     params["synth"]["osc"].each_with_index{ |osc,i|
       Osc.create(waveform:osc[:type],attack:osc[:attack],decay:osc[:decay],sustain:osc[:sustain],release:osc[:release],detune:osc[:detune],synth_id:@synth.id)    
