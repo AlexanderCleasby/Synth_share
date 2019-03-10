@@ -49,8 +49,12 @@
     <div class="button_cont">
         <%if @synth.user_id==session[:user_id] %>
             <input type="submit" name="ACTION" value="UPDATE">
-        <% end%>
+        <%end%>
+        <% if session[:user_id] then %>
         <input type="submit" name="ACTION" value="SAVE NEW">
+        <% else %>
+        <b>log in to save your own synths </b>
+        <%end%>
     </div>
 </form>
 <!--<tone-waveform class="demo"></tone-waveform>-->
