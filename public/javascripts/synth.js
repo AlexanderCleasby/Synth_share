@@ -2,6 +2,7 @@
 var voice1 = new Tone.PolySynth(5, Tone.Synth, {
     oscillator: {
         type: document.getElementById("voice1_type_dropdown").value,
+        volume:-30
     },
     envelope: {
         attack: document.getElementById("voice1_attack_slider").value,
@@ -16,7 +17,7 @@ var voice1 = new Tone.PolySynth(5, Tone.Synth, {
 var voice2 = new Tone.PolySynth(5, Tone.Synth, {
     oscillator: {
         type: document.getElementById("voice2_type_dropdown").value,
-
+        volume:-30
     },
     envelope: {
         attack: document.getElementById("voice2_attack_slider").value,
@@ -29,7 +30,7 @@ var voice2 = new Tone.PolySynth(5, Tone.Synth, {
 var voice3 = new Tone.PolySynth(5, Tone.Synth, {
     oscillator: {
         type: document.getElementById("voice3_type_dropdown").value,
-
+        volume:-30
     },
     envelope: {
         attack: document.getElementById("voice3_attack_slider").value,
